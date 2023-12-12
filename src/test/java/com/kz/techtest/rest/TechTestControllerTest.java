@@ -33,4 +33,17 @@ public class TechTestControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    public void whenFileUploadedCsv_dthenVerifyStatus() throws Exception {
+        MockMultipartFile file = new MockMultipartFile(
+                "file",
+                "test.txt",
+                MediaType.TEXT_PLAIN_VALUE,
+                "315CL  432100020001SGXDC FUSGX NK    20100910JPY01B 0000000001 0000000000000000000060DUSD000000000030DUSD000000000000DJPY201008200012380     688032000092500000000             O\n".getBytes()
+        );
+
+        mockMvc.perform(multipart("/upload/csv").file(file))
+                .andExpect(status().isOk());
+    }
+
 }

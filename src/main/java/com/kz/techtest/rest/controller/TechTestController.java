@@ -26,4 +26,11 @@ public class TechTestController {
         List<FutureMovementResponse> futureMovementResponses = FutureMovementUtils.domainToJson(futureMovementModels);
         return ResponseEntity.ok(futureMovementResponses);
     }
+
+    @PostMapping(value = "/upload/csv", produces = "application/json")
+    public ResponseEntity<List<FutureMovementResponse>> uploadFileCsvResponse(@RequestParam("file") MultipartFile file) {
+        List<FutureMovementModel> futureMovementModels = futureMovement.handleFile(file);
+        List<FutureMovementResponse> futureMovementResponses = FutureMovementUtils.domainToJson(futureMovementModels);
+        return ResponseEntity.ok(futureMovementResponses);
+    }
 }
