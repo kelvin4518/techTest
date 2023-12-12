@@ -27,8 +27,8 @@ public class FutureMovementImplTest {
         );
         List<FutureMovementModel> futureMovementModels = futureMovement.handleFile(file);
 
-        assertEquals(futureMovementModels.get(0).getClientInformation(), "CL 432100020001");
-        assertEquals(futureMovementModels.get(0).getProdcutInformation(), "SGX SGFX FUNK    20100910");
+        assertEquals(futureMovementModels.get(0).getClientInformation(), "CL  432100020001");
+        assertEquals(futureMovementModels.get(0).getProdcutInformation(), "SGX FUNK    20100910");
         assertEquals(futureMovementModels.get(0).getTotalTransactionAmount(), "1.0");
     }
 }

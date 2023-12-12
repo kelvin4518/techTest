@@ -3,7 +3,7 @@ package com.kz.techtest.service.impl;
 import com.kz.techtest.model.FutureMovementModel;
 import com.kz.techtest.model.InputRecord;
 import com.kz.techtest.service.FutureMovement;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
+@Service
 public class FutureMovementImpl implements FutureMovement {
     private List<FutureMovementModel> futureMovementModels = new ArrayList<>();
     private Map<String, Double> resultMap = new HashMap<>();
@@ -36,6 +36,8 @@ public class FutureMovementImpl implements FutureMovement {
                 futureMovementModel.setClientInformation(clientInformation);
                 futureMovementModel.setProdcutInformation(productInformation);
                 futureMovementModel.setTotalTransactionAmount(String.valueOf(resultMap.get(key)));
+
+                futureMovementModels.add(futureMovementModel);
             }
             return futureMovementModels;
         } catch (IOException e) {
@@ -45,7 +47,6 @@ public class FutureMovementImpl implements FutureMovement {
     }
 
     private void handleLine(String line) {
-        log.info(line);
         InputRecord inputRecord = new InputRecord(line.strip());
 
         String clientInformation = inputRecord.getClientType()

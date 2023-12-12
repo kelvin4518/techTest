@@ -15,6 +15,7 @@ import java.util.List;
 
 public class FutureMovementUtils {
     public static List<FutureMovementResponse> domainToJson(List<FutureMovementModel> futureMovementModels) {
+
         List<FutureMovementResponse> futureMovementResponses = new ArrayList<>();
         for (FutureMovementModel futureMovementModel : futureMovementModels) {
             FutureMovementResponse futureMovementResponse = new FutureMovementResponse();
