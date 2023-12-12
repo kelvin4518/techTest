@@ -11,6 +11,11 @@ public class FutureMovementUtils {
         List<FutureMovementResponse> futureMovementResponses = new ArrayList<>();
         for (FutureMovementModel futureMovementModel : futureMovementModels) {
             FutureMovementResponse futureMovementResponse = new FutureMovementResponse();
+
+            futureMovementResponse.setClientInformation(futureMovementModel.getClientInformation());
+            futureMovementResponse.setProdcutInformation(futureMovementModel.getProdcutInformation());
+            futureMovementResponse.setTotalTransactionAmount(futureMovementModel.getTotalTransactionAmount());
+
             futureMovementResponses.add(futureMovementResponse);
         }
 
